@@ -10,6 +10,7 @@ $content-heading-color: hsl(0, 0%, 40%);
 $content-heading-weight: 500;
 
 // Import Main CSS file from theme
+@import "rism-theme";
 @import "bulma";
 
 body {
