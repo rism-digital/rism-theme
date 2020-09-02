@@ -2,9 +2,9 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "rism-theme"
-  spec.version       = "0.1.0"
-  spec.authors       = ["Rodolfo Zitellini"]
-  spec.email         = ["rodolfo.zitellini@rism-ch.org"]
+  spec.version       = "0.1.19"
+  spec.authors       = ["Rodolfo Zitellini", "Andrew Hankinson"]
+  spec.email         = ["rodolfo.zitellini@rism-ch.org", "andrew.hankinson@rism.digital"]
 
   spec.summary       = "Shared theme for RISM websites."
   spec.homepage      = "http://www.rism.info"
@@ -12,5 +12,5 @@ Gem::Specification.new do |spec|
 
   spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r!^(assets|_layouts|_includes|_sass|LICENSE|README|_config\.yml)!i) }
 
-  spec.add_runtime_dependency "jekyll", "~> 3.8"
+  spec.add_runtime_dependency "jekyll", "~> 4.1"
 end
