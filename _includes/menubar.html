@@ -1,8 +1,11 @@
 {% assign menus = site.data.[layout.menubar] %}
+{% if include.submenubar %}
+    {% assign menus = site.data.[include.submenubar] %}
+{% endif %}
 
 <aside class="menu">
 {% for menu in menus %}
-    <h1>{{ menu.label[site.active_lang] }}</h1>
+    <h1 class="{%if include.margin %}pt-4{% endif %}">{{ menu.label[site.active_lang] }}</h1>
     <ul class="menu-list">
         {% for item in menu.items %}
         <li>
