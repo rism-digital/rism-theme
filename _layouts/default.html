@@ -4,6 +4,9 @@
 {% assign sidepanel = layout.sidepanel %}
 {% if sidepanel == blank %}{% assign sidepanel = page.sidepanel %}{% endif %}
 
+{% assign submenubar = layout.submenubar %}
+{% if submenubar == blank %}{% assign submenubar = page.submenubar %}{% endif %}
+
 {% assign show_posts = layout.show_posts  %}
 {% if show_posts != true %}{% assign show_posts = page.show_posts %}{% endif %}
 
@@ -43,6 +46,7 @@
                     {% elsif menubar or sidepanel %}
                     <div class="column is-4-desktop is-4-tablet side-content">
                         {% if menubar %}{% include menubar.html %}{% endif %}
+                        {% if submenubar %}{% include menubar.html submenubar=submenubar margin=menubar %}{% endif %}
                         {% if sidepanel %}{% include sidepanel.html margin=menubar %}{% endif %}
                     </div>
                     {% endif %}
