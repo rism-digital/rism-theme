@@ -7,6 +7,11 @@
 @import "bulma";
 @import "bulma-extensions";
 
+$rism-navbar-height: 52px;
+$rism-small-hero-height: 170px;
+$rism-large-hero-height: $rism-small-hero-height + $rism-navbar-height;
+$rism-hero-header-height: 30px;
+
 body {
     display: flex;
     min-height: 100vh;
@@ -80,14 +85,29 @@ div.float-right {
 
 .hero {
     .hero-head {
+        height: $rism-hero-header-height;
         padding: 0.25rem 1.5rem;
     }
     .hero-body {
-        padding: 0.5rem 1.5rem 2.0rem 1.5rem;
+        display: flex;
+        align-items: center;
+    }
+    .hero-footer {
+        height: $rism-hero-header-height;;
     }
 }
 .hero.is-medium {
-    height: 500px;
+    height: $rism-large-hero-height;
+    .hero-body {
+        height: $rism-large-hero-height - 2 * $rism-hero-header-height;
+        padding: 0px;
+    }
+}
+.hero.is-small {
+    height: $rism-small-hero-height;
+    .hero-body {
+        height: $rism-small-hero-height - 2 * $rism-hero-header-height;
+    }
 }
 
 .hero.has-bg-img { 

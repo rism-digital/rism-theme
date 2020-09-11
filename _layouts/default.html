@@ -1,3 +1,7 @@
+---
+hero_height: is-medium
+---
+
 {% assign menubar = layout.menubar %}
 {% if menubar == blank %}{% assign menubar = page.menubar %}{% endif %}
 
@@ -25,7 +29,9 @@
   {% include head.html %}
   <body>
     <div id="wrapper">
-        {% include header.html %}
+        {% unless page.hide_navbar %}
+            {% include header.html %}
+        {% endunless %}
         {% unless page.hide_hero %}
             {% include hero.html %}
         {% endunless %}
