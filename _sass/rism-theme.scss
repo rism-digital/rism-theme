@@ -6,3 +6,8 @@ $footer-padding: 1rem 1.5rem 1rem;
 
 $content-heading-color: hsl(0, 0%, 40%);
 $content-heading-weight: 500;
+
+$rism-navbar-height: 52px;
+$rism-small-hero-height: 170px;
+$rism-large-hero-height: $rism-small-hero-height + $rism-navbar-height;
+$rism-hero-header-height: 30px;
