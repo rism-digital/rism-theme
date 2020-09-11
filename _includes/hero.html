@@ -1,4 +1,10 @@
-<section class="hero {% if page.hero_height %} {{ page.hero_height }} {% endif %} is-primary has-bg-img">
+{% if page.hero_height %}
+    {% assign hero_height = page.hero_height %}
+{% else if layout.hero_height %}
+    {% assign hero_height = layout.hero_height %}
+{% endif %}
+
+<section class="hero {{ hero_height }} is-primary has-bg-img">
     <div class="hero-head">
         <div class="container">
             <div class="is-pulled-right">
@@ -10,7 +16,7 @@
         </div>
     </div>
     <div class="hero-body">
-        {% if (page.hero_height == "is-small") or (layout.hero_height == "is-small") %}
+        {% if hero_height == "is-small" %}
         <div class="container">
             <img src="/images/logo.png">
         </div>
@@ -30,4 +36,5 @@
         </div>
         {% endif %}
     </div>
+    <div class="hero-footer"></div>
 </section>
