@@ -90,13 +90,14 @@ div.float-right {
   height: $rism-large-hero-height;
   .hero-body {
     height: $rism-large-hero-height - 2 * $rism-hero-header-height;
-    padding: 0;
+    padding: 0.0rem 1.5rem;
   }
 }
 .hero.is-small {
   height: $rism-small-hero-height;
   .hero-body {
     height: $rism-small-hero-height - 2 * $rism-hero-header-height;
+    padding: 0.0rem 1.5rem;
   }
 }
 

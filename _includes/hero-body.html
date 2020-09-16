@@ -1,0 +1,20 @@
+<div class="hero-body">
+    {% if hero_height == "is-small" %}
+    <div class="container">
+        <img src="/images/logo.png">
+    </div>
+    {% else %}
+    <div class="container is-hidden-mobile">
+        <div class="level ">
+            <div class="level-left">
+                <img src="/images/logo-large.png">
+            </div>
+            <div class="level-left">
+            </div>
+        </div>
+    </div>
+    <div class="container is-hidden-tablet">
+        <img src="/images/logo.png">
+    </div>
+    {% endif %}
+</div>
