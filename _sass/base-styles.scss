@@ -73,6 +73,9 @@ div.float-right {
   min-height: 150px;
 }
 
+////////////////////////////////////////////////////
+// navbar and hero 
+
 .hero {
   .hero-head {
     height: $rism-hero-header-height;
@@ -103,6 +106,9 @@ div.float-right {
 
 .hero.has-bg-img {
   background: url('/images/bg-04.png') repeat repeat;
-  border-top: 1px solid $link;
   border-bottom: 1px solid $content-heading-color;
+}
+
+.navbar {
+    border-bottom: 1px solid $content-heading-color;
 }
