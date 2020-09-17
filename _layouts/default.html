@@ -29,11 +29,11 @@ hero_height: is-medium
   {% include head.html %}
   <body>
     <div id="wrapper">
-        {% unless page.hide_navbar %}
-            {% include header.html %}
-        {% endunless %}
         {% unless page.hide_hero %}
             {% include hero.html %}
+        {% endunless %}
+        {% unless page.hide_navbar %}
+            {% include header.html %}
         {% endunless %}
         <section class="section">
             <div class="container">
