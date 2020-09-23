@@ -29,6 +29,27 @@ Or install it yourself as:
 
     $ gem install rism-theme
 
+### Configuring the footer
+
+The footer can be configured to display social media links and sponsors. For example:
+
+```yaml
+follow-us:
+  facebook: https://www.facebook.com/RISM.info/
+  twitter: https://twitter.com/RISM_music
+  youtube: https://www.youtube.com/channel/UCWLRkiqVuq8BrYbCArubi_w
+```
+
+```yaml
+sponsors:
+  - url: https://www.musicology.org/
+    logo: logo_ims.png
+  - url: https://www.iaml.info/
+    logo: logo_iaml.png
+```
+
+Logo images have to be placed in `./images/footer`
+
 ## Usage
 
 TODO: Write usage instructions here. Describe your available layouts, includes, sass and/or assets.
