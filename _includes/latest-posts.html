@@ -3,7 +3,7 @@
 
 <h1>{{ latest.name[site.active_lang] }}</h1>
 
-<div class="columns is-multiline">
+<div class="columns is-multiline is-variable">
     {% for post in site.posts limit:5 %}
     <div class="column is-12">
         {% include post-card.html %}
