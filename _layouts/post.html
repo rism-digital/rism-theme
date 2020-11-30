@@ -12,7 +12,7 @@ permalink: page.permalink
     {% if page.author != '' and page.email != '' %}
         <a href="mailto:{{ page.email }}">{{ page.author }}</a>
     {% elsif page.email != '' %}
-        <i>{{ page.email }}</i>{% endif %}
+        <i>{{ page.email }}</i>
     {% elsif page.author != '' %}
         {{ page.author }}
     {% endif %}
