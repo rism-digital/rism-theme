@@ -9,9 +9,13 @@ permalink: page.permalink
 
 {% if page.author or page.email %}
 <h4>
-    {% if page.author != '' %}{{ page.author }}{% endif %}
-    {% if page.author != '' and page.email != '' %}&nbsp;{% endif %}
-    {% if page.email != '' %}<i>{{ page.email }}</i>{% endif %}
+    {% if page.author != '' and page.email != '' %}
+        <a href="mailto:{{ page.email }}">{{ page.author }}</a>
+    {% elsif page.email != '' %}
+        <i>{{ page.email }}</i>{% endif %}
+    {% elsif page.author != '' %}
+        {{ page.author }}
+    {% endif %}
 </h4>
 {% endif %}
 
