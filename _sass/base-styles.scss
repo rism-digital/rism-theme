@@ -80,6 +80,13 @@ div.float-right {
   .hero-head {
     height: $rism-hero-header-height;
     padding: 0.25rem 1.5rem;
+    a.src_link {
+      opacity: 0.0;
+    }
+    a.src_link:hover {
+      opacity: 0.2;
+      transition: 0.3s;
+    }
   }
   .hero-body {
     display: flex;

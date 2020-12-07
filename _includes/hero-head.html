@@ -1,4 +1,9 @@
 <div class="container">
+    {% if site.src_link %}
+    <div class="is-pulled-left">
+        <a href="{{ site.src_link}}/{{ page.path}}" target="_blank" class="src_link">Code</a>
+    </div>
+    {% endif %}
     <div class="is-pulled-right">
         <a {% if site.active_lang == "en" %}class="disabled"{% endif %} href="{{ site.baseurl | append: " " | append: page.permalink }}">English</a>
         {% if site.languages contains 'de' %}|&#160;<a {% if site.active_lang == "de" %}class="disabled"{% endif %} href="{{ site.baseurl | append: "/de" | append: page.permalink }}">Deutsch</a>{% endif %}
