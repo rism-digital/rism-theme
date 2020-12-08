@@ -19,6 +19,10 @@ permalink: page.permalink
 </h4>
 {% endif %}
 
+{% if page.date %}
+<p><em>{{ page.date | date: "%A, %B %-d, %Y" }}</em></p>
+{% endif %}
+
 {% if page.image %}
 <div class="float-left">
     <img src="{{ page.image }}">
