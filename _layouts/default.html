@@ -53,7 +53,7 @@ hero_height: is-medium
                     <div class="column is-4-desktop is-4-tablet side-content">
                         {% if menubar %}{% include menubar.html %}{% endif %}
                         {% if submenubar %}{% include menubar.html submenubar=submenubar margin=menubar %}{% endif %}
-                        {% if sidepanel != nil and sidepanel != blank and sidepanel != '' %}{% include sidepanel.html sidepanel=sidepanel margin=menubar %}
+                        {% if sidepanel != nil and sidepanel != blank and sidepanel != '' %}{% include sidepanel.html sidepanel=sidepanel margin=menubar %}{% endif %}
                     </div>
                     {% endif %}
                 </div>
