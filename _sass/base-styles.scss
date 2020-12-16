@@ -80,6 +80,14 @@ div.float-right {
   .hero-head {
     height: $rism-hero-header-height;
     padding: 0.25rem 1.5rem;
+    // control the color in the .head-head because of some browser differences
+    color: $content-heading-color;
+    a {
+      color: $primary !important;
+    }
+    a.disabled {
+      color: $content-heading-color !important;
+    }
     a.src_link {
       opacity: 0.0;
     }
