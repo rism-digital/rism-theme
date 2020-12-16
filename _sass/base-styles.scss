@@ -35,10 +35,6 @@ a.disabled {
   h4 {
     font-size: 17px
   }
-  // All links in the content (except navbar items)
-  a:not(.navbar-item) {
-    font-weight: 475;
-  }
 }
 
 .side-content {
@@ -47,8 +43,9 @@ a.disabled {
   }
   .menu-list a {
     padding: 0.30em 0.75em;
-    // Reset font-weight for side menus
-    font-weight: 400;
+  }
+  .menu-list a.is-active {
+    background-color: $primary;
   }
 
   h1 {
