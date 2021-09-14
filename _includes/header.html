@@ -31,19 +31,21 @@
 
             <div class="navbar-end">
                 {% if site.enable-search %}
-                <form action="/search.html">
-                    <div class="field navbar-item has-addons">
-                        <div class="control has-icons-right">
-                            <input id="website-search" class="input is-small" type="text" name="q" placeholder="Search the website ... ">
-                            <span class="icon is-right is-small">
-                                <i class="fas fa-search"></i>
-                            </span>
+                <div class="navbar-item">
+                    <form action="/search.html">
+                        <div class="field has-addons">
+                            <div class="control has-icons-right">
+                                <input id="website-search" class="input is-small" type="text" name="q" placeholder="Search the website ... ">
+                                <span class="icon is-right is-small">
+                                    <i class="fas fa-search"></i>
+                                </span>
+                            </div>
+                            <div class="control">
+                                <button type="submit" class="button is-small">Search</button>
+                            </div>
                         </div>
-                        <div class="control">
-                            <button type="submit" class="button is-small">Search</button>
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
                 {% endif %}
             </div>
 
