@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "rism-theme"
-  spec.version       = "0.1.55"
+  spec.version       = "0.1.56"
   spec.authors       = ["Rodolfo Zitellini", "Andrew Hankinson", "Laurent Pugin"]
   spec.email         = ["rodolfo.zitellini@rism-ch.org", "andrew.hankinson@rism.digital", "laurent.pugin@rism.digital"]
 
