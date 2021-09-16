@@ -1,4 +1,20 @@
+{% assign search_title = site.data.locales | where: "id", "search-title" | first %}
+
+<h1>{{ search_title.name[site.active_lang] }}</h1>
+
+<div id="search-results"></div>
+<template id="search-item">
+    <div class="mb-4">
+        <h3><a></a></h3>
+        <p></p>
+    </div>
+</template>
+
 <script src="/assets/js/lunr.js"></script>
+<script src="/assets/js/lunr.stemmer.support.js"></script>
+<script src="/assets/js/lunr.de.js"></script>
+<script src="/assets/js/lunr.fr.js"></script>
+<script src="/assets/js/lunr.it.js"></script>
 
 <script>
     /* Async Function to Start LunrJS */
@@ -38,7 +54,7 @@
     }
 
     /* Clear the Search Results element then populate with search results */
-    function searchSite( search, query )
+    function searchSite( search, query, query_term )
     {
         let template = document.querySelector( "#search-item" );
         let resultsContainer = document.querySelector( "#search-results" );
@@ -46,7 +62,8 @@
         resultsContainer.innerHTML = "";
 
         let allResults = search.idx.search( query );
-        if ( allResults.length === 0 ) resultsContainer.innerHTML = "<p>Nothing found when searching for '" + query + "'</p>";
+
+        if ( allResults.length === 0 ) resultsContainer.innerHTML = "<p>Nothing found when searching for '" + query_term + "'</p>";
         else allResults.forEach( function ( result )
         {
             let output = document.importNode( template.content, true );
@@ -78,24 +95,38 @@
         /* Initialize Lunr */
         let Search = await startLunrJSAsync();
 
+        let langSelect = document.getElementById("website-search-lang");
+        let lang = "any";
+
         /* If there is a query in the URL, use that as the search query */
         let query;
         let params = new URLSearchParams( document.location.search.substring( 1 ) );
+        /* If we have a lang in the URL, use that */
+        if ( params.get( "lang" ) )
+        {
+            lang = params.get( "lang" );
+        }
+        /* Otherwise, if we have a select for lang, use that */
+        else if (langSelect) {
+            lang = langSelect.options[langSelect.selectedIndex].value;
+        }
         if ( params.get( "q" ) )
         {
+            /* Also make sure we preserve the query term in the form */
             document.getElementById("website-search").value = params.get("q");
             query = params.get( "q" );
-            searchSite( Search, query );
+            let query_term = query;
+            /* If a lang is selected, make it a '+... +lang:xxyy' query */
+            if (lang != "any") {
+                query = "+" + query + " +lang:" + lang; 
+
+            }
+            /* Preserve the lang selection in the select (if any) */
+            if (langSelect) {
+                langSelect.value = lang;
+            }
+            //console.log( query )
+            searchSite( Search, query, query_term );
         }
     } )();
 </script>
-
-<h1>Website search</h1>
-
-<div id="search-results"></div>
-<template id="search-item">
-    <div class="mb-4">
-        <h3><a></a></h3>
-        <p></p>
-    </div>
-</template>
