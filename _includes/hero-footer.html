@@ -1,1 +1,15 @@
-<!-- empty by default -->
+<div class="container">
+    {% if hero_height == "is-medium" and site.enable-search %}
+    <div class="is-pulled-right">
+        <a href="/search.html">
+            <span class="icon-text">
+                {% assign search_title = site.data.locales | where: "id", "search-title" | first %}
+                <span>{{ search_title.name[site.active_lang] }}</span>
+                <span class="icon">
+                    <i class="fas fa-search"></i>
+                </span>
+            </span>
+        </a>
+    </div>
+    {% endif %}
+</div>

@@ -104,7 +104,11 @@ div.float-right {
     align-items: center;
   }
   .hero-footer {
-    height: $rism-hero-header-height;;
+    height: $rism-hero-header-height;
+    color: $content-heading-color;
+    a {
+      color: $primary !important;
+    }
   }
 }
 .hero.is-medium {
