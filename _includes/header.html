@@ -31,7 +31,7 @@
 
             <div class="navbar-end">
 
-                {% if site.enable-search and page.no-search-box != true %}
+                {% if site.enable_search and page.no_search_box != true %}
                 <div class="navbar-item">
                     {% assign search_title = site.data.locales | where: "id", "search-title" | first %}
                     {% assign action = "/search.html" %}
