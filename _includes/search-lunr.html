@@ -2,6 +2,7 @@
 {% assign search_no_result = site.data.locales | where: "id", "search-no-result" | first %}
 {% assign search_no_query = site.data.locales | where: "id", "search-no-query" | first %}
 {% assign search_results_count = site.data.locales | where: "id", "search-results-count" | first %}
+{% assign labels = site.data.categories %}
 
 <div id="search-results-header" style="display: none;">
     <h1>{{ search_results.name[site.active_lang] }}</h1>
@@ -17,6 +18,7 @@
 <template id="search-item-template">
     <div class="mb-5">
         <h3 class="mb-1"><a></a></h3>
+        <p class="post-info is-italic mb-1"></p>
         <p class="text"></p>
     </div>
 </template>
@@ -34,6 +36,14 @@
     let searchResultsHeader = document.querySelector( "#search-results-header" );
     let searchResultsP = document.querySelector( "#search-results-p" );
     let searchResultsCount = document.querySelector( "#search-results-count" );
+
+    // Create a JS map with the translation of the categories
+    let categories = new Map();
+    {% assign labels = site.data.categories %}
+    {% for category in site.categories %}
+        {% assign label = labels | where: "id", category[0] | first %}
+        categories.set("{{ category[0] }}", "{{ label.name[site.active_lang] }}");
+    {% endfor %} 
 
     // Async Function to Start LunrJS
     async function startLunrJSAsync()
@@ -87,6 +97,7 @@
             {
                 let output = document.importNode( template.content, true );
                 let title = output.querySelector( "a" );
+                let post_info = output.querySelector( "p.post-info" );
                 let summary = output.querySelector( "p.text" );
                 let docRef;
 
@@ -105,6 +116,13 @@
                     title.setAttribute( "href", docRef.url );
                     summary.innerHTML = docRef.body.substring( 0, 200 ) + '...';
                     searchResults.appendChild( output );
+                    // Show the post info if we have a date and a category
+                    if ( docRef.date && docRef.category ) {
+                        post_info.innerHTML =  docRef.date + " – " + categories.get(docRef.category);
+                    }
+                    else {
+                        post_info.style.display = "none";
+                    }
                 }
             } );
         }
@@ -122,6 +140,8 @@
         let searchForm = document.getElementById("website-search-form");
         let langSelect = document.getElementById("website-search-lang");
         let lang = "any";
+        let categorySelect = document.getElementById("website-search-category");
+        let category = "any"
 
         let params = new URLSearchParams( document.location.search.substring( 1 ) );
         // If we have a lang in the URL, use that
@@ -132,6 +152,14 @@
         // Otherwise, if we have a select for lang, use that
         else if (langSelect) {
             lang = langSelect.options[langSelect.selectedIndex].value;
+        }
+        // If we have a category in the URL, use that
+        if ( params.get( "category" ) )
+        {
+            category = params.get( "category" );
+        }
+        else if (categorySelect) {
+            category = categorySelect.options[categorySelect.selectedIndex].value;
         }
         if ( params.get( "q" ) )
         {
@@ -150,6 +178,9 @@
             if (lang != "any") {
                 query = query + " +lang:" + lang; 
             }
+            if (category != "any") {
+                query = query + " +category:" + category;
+            }
             if (!query.startsWith("+")) {
                 query = "+" + query;
             }
@@ -157,6 +188,10 @@
             // Preserve the lang selection in the select (if any)
             if (langSelect) {
                 langSelect.value = lang;
+            }
+            // Preserve the category selection in the select (if any)
+            if (categorySelect) {
+                categorySelect.value = category;
             }
             //console.log( query )
             searchSite( Search, query, query_term );

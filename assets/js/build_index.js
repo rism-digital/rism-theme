@@ -30,6 +30,9 @@ fs.readFile( inputFile, 'utf8', ( err, data ) =>
         this.field( 'title' )
         this.field( 'body' )
         this.field( 'lang' )
+        this.field( 'post' )
+        this.field( 'category' )
+        this.field( 'date' )
 
         documents.forEach( function ( doc )
         {

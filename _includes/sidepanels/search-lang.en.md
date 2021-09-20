@@ -36,6 +36,9 @@
                 </span>
             </p>
         </div>
+        {% if site.enable_search_posts %}
+            {% include sidepanels/search-post.en.md %}
+        {% endif %}
         <button type="submit" class="button is-small is-dark">
             <span class="icon is-small">
                 <i class="fas fa-search"></i>
