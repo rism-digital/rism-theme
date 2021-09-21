@@ -21,11 +21,41 @@ fs.readFile( inputFile, 'utf8', ( err, data ) =>
         return
     }
     documents = JSON.parse( data );
-    
+
+    // Because trimming does not work with multiLanguages in lunr - see below
+    // we remove the ’ (\u2019) by hand in the document. 
+    // This is not particularly elegant but at least works perfectly well
+    for ( var i = 0; i < documents.length; i++ )
+    {
+        var doc = documents[i];
+        doc['body'] = doc['body'].replace( /\u2019/g, ' ' );
+        doc['title'] = doc['title'].replace( /\u2019/g, ' ' );
+    }
+
+    /*
+    // Attempt to add a apostrophe trimmer to fix the problem with xx's searches
+    // Unfortunately, this does not work.
+    var apostropheSTrimmer = function ( token )
+    {
+        return token.update( function ( s )
+        {
+            //if ( s.match( /\u2019$/g ) ) console.log(s);
+            return s.replace(/\u2019$/, '')
+        })
+    }
+
+    lunr.Pipeline.registerFunction(apostropheSTrimmer, 'apostropheSTrimmer')
+    */
+
     // Build the index
     var idx = lunr( function ()
     {
         this.use( lunr.multiLanguage( 'en', 'de', 'fr', 'it' ) )
+        /*
+        // This works only when multiLanguage is not set..
+        this.pipeline.remove( lunr.trimmer )
+        this.pipeline.add( apostropheSTrimmer )
+        */
         this.ref( 'id' )
         this.field( 'title' )
         this.field( 'body' )
