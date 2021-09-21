@@ -1,4 +1,5 @@
 {% assign more = site.data.locales | where: "id", "more" | first %}
+{% assign post_category = site.data.categories | where: "id", post.category | first %}
 
 <div class="columns news">
     <div class="column">
@@ -7,9 +8,16 @@
         {% endif %}
     </div>
     <div class="column is-four-fifths">
-        <p class="has-text-weight-semibold">{{ post.title }}</p>
-        <p>{{ post.content | markdownify | strip_html | truncatewords: 50 }}</p>
-        
+        <p class="has-text-weight-semibold mb-1">{{ post.title }}</p>
+        <p class="mb-1">{{ post.content | markdownify | strip_html | truncatewords: 50 }}</p>
+        {% unless page.no_post_category %}
+        <p class="mb-1"><em>
+        {{ post.date | date: "%-d %B %Y" }}
+        {% unless page.pagination.category %}
+        – {{ post_category.name[site.active_lang] }}
+        {% endunless %}
+        </em></p>
+        {% endunless %}
         <p><a href="{{ site.baseurl }}{{ post.url }}">{{ more.name[site.active_lang] }}</a></p>
     </div>
 </div>

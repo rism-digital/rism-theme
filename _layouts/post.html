@@ -33,13 +33,17 @@ permalink: page.permalink
 
 {% include share.html %}
 
+{% assign category = site.data.locales | where: "id", "category" | first %}
+{% assign post_category = site.data.categories | where: "id", page.category | first %}
+
+<p class="mt-4"><i>{{ category.name[site.active_lang] }}: {{ post_category.name[site.active_lang] }}</i></p>
+
 <hr/>
 
 {% assign older = site.data.locales | where: "id", "older" | first %}
 {% assign newer = site.data.locales | where: "id", "newer" | first %}
 {% assign older_by_cat = site.data.locales | where: "id", "older-by-cat" | first %}
 {% assign newer_by_cat = site.data.locales | where: "id", "newer-by-cat" | first %}
-
 
 <div class="level">
     <div class="level-left">
