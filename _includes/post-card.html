@@ -13,7 +13,7 @@
         {% unless page.no_post_category %}
         <p class="mb-1"><em>
         {{ post.date | date: "%-d %B %Y" }}
-        {% unless page.pagination.category %}
+        {% unless page.pagination.category or page.pagination.category == 'posts' %}
         – {{ post_category.name[site.active_lang] }}
         {% endunless %}
         </em></p>
