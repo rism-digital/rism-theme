@@ -14,7 +14,6 @@
         <p class="mb-1"><em>
         {{ post.date | date: "%-d %B %Y" }}
         {% unless page.pagination.category or site.no_post_categories %}
-        {{ site.pagination.category }}
         – {{ post_category.name[site.active_lang] }}
         {% endunless %}
         </em></p>
