@@ -3,7 +3,7 @@ hero_height: is-medium
 ---
 
 {% assign menubar = layout.menubar %}
-{% if menubar == blank %}{% assign menubar = page.menubar %}{% endif %}
+{% if menubar == nil or menubar == blank %}{% assign menubar = page.menubar %}{% endif %}
 
 {% assign sidepanel = layout.sidepanel %}
 {% if sidepanel == nil or sidepanel == blank %}{% assign sidepanel = page.sidepanel %}{% endif %}
@@ -37,7 +37,7 @@ hero_height: is-medium
         {% endunless %}
         <section class="section">
             <div class="container">
-                <div class="columns is-multiline is-variable is-8">
+                <div class="columns is-variable is-8">
                     <div class="column {{ content_width }}">
                         <div class="content">
                         {{ content }}
