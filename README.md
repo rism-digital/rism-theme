@@ -125,7 +125,7 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 
 ## Development
 
-To set up your environment to develop this theme, run `bundle install`.
+Use Ruby `3.3.11` for local development. With `rbenv`, `asdf`, or another Ruby version manager installed, run `bundle install` to set up the environment.
 
 Your theme is setup just like a normal Jekyll site! To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme's contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
 
@@ -135,4 +135,3 @@ To add a custom directory to your theme-gem, please edit the regexp in `rism-the
 ## License
 
 The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
