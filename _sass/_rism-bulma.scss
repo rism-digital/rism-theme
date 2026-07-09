@@ -1,0 +1,56 @@
+@use "rism-theme-config" as config;
+
+@forward "bulma-no-dark-mode" with (
+  $primary: config.$primary,
+  $link: config.$link,
+  $family-primary: config.$family-primary,
+  $body-font-size: config.$body-font-size,
+  $footer-padding: config.$footer-padding,
+  $content-heading-color: config.$content-heading-color,
+  $content-heading-weight: config.$content-heading-weight,
+  $radius: config.$radius,
+  $notification-radius: config.$notification-radius,
+  $notification-padding: config.$notification-padding,
+  $input-radius: config.$input-radius,
+  $control-radius: config.$control-radius,
+  $navbar-background-color: config.$navbar-background-color,
+  $navbar-item-color: config.$navbar-item-color
+);
+
+// Preserve a small compatibility surface for exact downstream navbar colors
+// that were previously supplied via Bulma 0.9 global variables.
+.navbar {
+  @if config.$navbar-item-hover-background-color != null {
+    .navbar-item:hover,
+    .navbar-item:focus,
+    .navbar-link:hover,
+    .navbar-link:focus {
+      background-color: config.$navbar-item-hover-background-color;
+    }
+  }
+
+  @if config.$navbar-item-hover-color != null {
+    .navbar-item:hover,
+    .navbar-item:focus,
+    .navbar-link:hover,
+    .navbar-link:focus {
+      color: config.$navbar-item-hover-color;
+    }
+  }
+
+  @if config.$navbar-item-active-background-color != null {
+    .navbar-item.is-active,
+    .navbar-link.is-active,
+    a.navbar-item.is-active {
+      background-color: config.$navbar-item-active-background-color;
+    }
+  }
+
+  @if config.$navbar-item-active-color != null {
+    .navbar-item.is-active,
+    .navbar-link.is-active,
+    a.navbar-item.is-active {
+      color: config.$navbar-item-active-color;
+    }
+  }
+}

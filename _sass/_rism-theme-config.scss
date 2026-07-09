@@ -1,0 +1,41 @@
+@use "sass:map";
+@use "sass:meta";
+@use "sass:color";
+
+@use "rism-theme" as theme;
+@use "site-theme" as site;
+
+$site-vars: meta.module-variables("site");
+$site-config: ();
+
+@if map.has-key($site-vars, "rism-theme") and meta.type-of(map.get($site-vars, "rism-theme")) == "map" {
+  $site-config: map.get($site-vars, "rism-theme");
+}
+
+@function cfg($key, $fallback) {
+  @if map.has-key($site-config, $key) {
+    @return map.get($site-config, $key);
+  }
+
+  @return $fallback;
+}
+
+$primary: cfg("primary", theme.$primary);
+$link: cfg("link", theme.$link);
+$family-primary: cfg("family-primary", theme.$family-primary);
+$body-font-size: cfg("body-font-size", theme.$body-font-size);
+$footer-padding: cfg("footer-padding", theme.$footer-padding);
+$content-heading-color: cfg("content-heading-color", theme.$content-heading-color);
+$content-heading-weight: cfg("content-heading-weight", theme.$content-heading-weight);
+$radius: cfg("radius", 0.375rem);
+$notification-radius: cfg("notification-radius", $radius);
+$notification-padding: cfg("notification-padding", 1.375em 1.5em);
+$input-radius: cfg("input-radius", $radius);
+$control-radius: cfg("control-radius", $radius);
+$navbar-background-color: cfg("navbar-background-color", $primary);
+$navbar-item-color: cfg("navbar-item-color", #fff);
+$navbar-item-hover-background-color: cfg("navbar-item-hover-background-color", color.adjust($primary, $lightness: 5%));
+$navbar-item-hover-color: cfg("navbar-item-hover-color", #fff);
+$navbar-item-active-background-color: cfg("navbar-item-active-background-color", color.adjust($primary, $lightness: -5%));
+$navbar-item-active-color: cfg("navbar-item-active-color", #fff);
+$grey: cfg("grey", hsl(221, 14%, 48%));

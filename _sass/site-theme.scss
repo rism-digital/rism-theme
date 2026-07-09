@@ -1,1 +1,3 @@
-/* an empty file to over-ride in the local sites for site-specific theming. */
+// Theme consumers can override Bulma/RISM settings by defining this map in
+// their local `_sass/site-theme.scss` before any site-specific CSS.
+$rism-theme: () !default;

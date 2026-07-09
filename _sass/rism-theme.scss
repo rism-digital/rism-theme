@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-$primary: #004f8f;
-$link: #0570c9;
-$family-primary: "Noto Sans", "Helvetica", "Arial", sans-serif;
-$body-font-size: 15px;
-$footer-padding: 1rem 1.5rem 1rem;
+$primary: #004f8f !default;
+$link: #0570c9 !default;
+$family-primary: "Noto Sans", "Helvetica", "Arial", sans-serif !default;
+$body-font-size: 15px !default;
+$footer-padding: 1rem 1.5rem 1rem !default;
 
-$content-heading-color: hsl(0, 0%, 40%);
-$content-heading-weight: 500;
+$content-heading-color: hsl(0, 0%, 40%) !default;
+$content-heading-weight: 500 !default;
 
-$rism-navbar-height: 52px;
-$rism-small-hero-height: 170px;
+$rism-navbar-height: 52px !default;
+$rism-small-hero-height: 170px !default;
 $rism-large-hero-height: $rism-small-hero-height + $rism-navbar-height;
-$rism-hero-header-height: 30px;
+$rism-hero-header-height: 30px !default;
