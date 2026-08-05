@@ -3,7 +3,7 @@
 @use "sass:color";
 
 @use "rism-theme" as theme;
-@use "site-theme" as site;
+@use "rism-site-config" as site;
 
 $site-vars: meta.module-variables("site");
 $site-config: ();

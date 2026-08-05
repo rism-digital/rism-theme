@@ -134,9 +134,10 @@ To add a custom directory to your theme-gem, please edit the regexp in `rism-the
 
 ### Bulma 1 theme overrides
 
-Bulma 1 no longer relies on the old global-variable import pattern. Local sites should expose theme overrides from `_sass/site-theme.scss` using a `$rism-theme` map, for example:
+Bulma 1 no longer relies on the old global-variable import pattern. Local sites should expose theme overrides from `_sass/rism-site-config.scss` using a `$rism-theme` map, for example:
 
 ```scss
+// _sass/rism-site-config.scss
 $rism-theme: (
   "primary": #005091,
   "navbar-background-color": #005091,
@@ -150,7 +151,7 @@ $rism-theme: (
 );
 ```
 
-Site-specific CSS can stay in the same `site-theme.scss` file below the map during the transition.
+Keep site-specific CSS in `_sass/site-theme.scss`. The separate configuration module ensures the overrides are loaded before Bulma is compiled.
 
 Dark mode is disabled in this theme wrapper. Bulma is compiled through a light-only entrypoint, so no `prefers-color-scheme: dark` theme variables are emitted.
 
