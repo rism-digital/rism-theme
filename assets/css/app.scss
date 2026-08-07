@@ -1,9 +1,16 @@
 ---
 ---
 
-// Import Main CSS file from theme
-@import "rism-theme";
-@import "site-theme";
-@import "bulma";
-@import "bulma-extensions";
-@import "base-styles";
+@use "rism-theme" as theme;
+@use "rism-theme-config" as config;
+@use "rism-bulma";
+@use "bulma-extensions/bulma-collapsible";
+@use "base-styles";
+
+$primary: config.$primary;
+$link: config.$link;
+$grey: config.$grey;
+$content-heading-color: config.$content-heading-color;
+$rism-hero-header-height: theme.$rism-hero-header-height;
+$rism-small-hero-height: theme.$rism-small-hero-height;
+$rism-large-hero-height: theme.$rism-large-hero-height;

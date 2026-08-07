@@ -8,7 +8,9 @@
         {% endif %}
     </div>
     <div class="column is-four-fifths">
-        <p class="has-text-weight-semibold mb-1">{{ post.title }}</p>
+        <h4 class="has-text-weight-semibold mb-1">
+            <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+        </h4>
         <p class="mb-1">{{ post.content | markdownify | strip_html | truncatewords: 50 }}</p>
         {% unless page.no_post_category %}
         <p class="mb-1"><em>

@@ -3,6 +3,6 @@
 .jekyll-cache
 .sass-cache
 _site
-Gemfile.lock
 *.iml
 .idea
+.DS_Store

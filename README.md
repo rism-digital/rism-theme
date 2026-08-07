@@ -125,14 +125,36 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 
 ## Development
 
-To set up your environment to develop this theme, run `bundle install`.
+Use Ruby `4.0.5` for local development. With `rbenv`, `asdf`, or another Ruby version manager installed, run `bundle install` to set up the environment.
 
 Your theme is setup just like a normal Jekyll site! To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme's contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
 
 When your theme is released, only the files in `_layouts`, `_includes`, `_sass` and `assets` tracked with Git will be bundled.
 To add a custom directory to your theme-gem, please edit the regexp in `rism-theme.gemspec` accordingly.
 
+### Bulma 1 theme overrides
+
+Bulma 1 no longer relies on the old global-variable import pattern. Local sites should expose theme overrides from `_sass/rism-site-config.scss` using a `$rism-theme` map, for example:
+
+```scss
+// _sass/rism-site-config.scss
+$rism-theme: (
+  "primary": #005091,
+  "navbar-background-color": #005091,
+  "navbar-item-color": #fff,
+  "navbar-item-hover-background-color": #0c67a6,
+  "navbar-item-hover-color": #fff,
+  "navbar-item-active-background-color": #004782,
+  "navbar-item-active-color": #fff,
+  "radius": 3px,
+  "notification-padding": 1.375em 0.75rem,
+);
+```
+
+Keep site-specific CSS in `_sass/site-theme.scss`. The separate configuration module ensures the overrides are loaded before Bulma is compiled.
+
+Dark mode is disabled in this theme wrapper. Bulma is compiled through a light-only entrypoint, so no `prefers-color-scheme: dark` theme variables are emitted.
+
 ## License
 
 The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-

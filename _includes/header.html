@@ -10,18 +10,19 @@
         </div>
         <div class="navbar-menu" id="navMenu">
             <div class="navbar-start">
+                {% assign active_nav = page.permalink | default: layout.nav %}
                 {% for item in site.data.navigation %}
                     {% if item.dropdown %}
                     <div class="navbar-item has-dropdown is-hoverable">
-                        <a href="{{ item.link | absolute_url }}" class="navbar-link {% if item.link == page.url %}is-active{% endif %}">{{ item.name[site.active_lang] }}</a>
+                        <a href="{{ item.link | relative_url }}" class="navbar-link {% if item.link == page.url %}is-active{% endif %}">{{ item.name[site.active_lang] }}</a>
                         <div class="navbar-dropdown">
                             {% for subitem in item.dropdown %}
-                            <a href="{{ subitem.link | absolute_url }}" {% if item.blank %}target="_blank"{% endif %} class="navbar-item {% if subitem.link == page.url %}is-active{% endif %}">{{ subitem.name }}</a>
+                            <a href="{{ subitem.link | relative_url }}" {% if item.blank %}target="_blank"{% endif %} class="navbar-item {% if subitem.link == page.url %}is-active{% endif %}">{{ subitem.name }}</a>
                             {% endfor %}
                         </div>
                     </div>
                     {% else %}
-                    <a href="{{ item.link | absolute_url }}" {% if item.blank %}target="_blank"{% endif %} class="navbar-item {% if layout.nav == item.link %}is-active{% endif %}">
+                    <a href="{{ item.link | relative_url }}" {% if item.blank %}target="_blank"{% endif %} class="navbar-item {% if active_nav == item.link %}is-active{% endif %}">
                         {{ item.name[site.active_lang] }}
                         {% if item.blank %}<i class="ml-2 fa fa-xs fa-external-link-alt"></i>{% endif %}
                     </a>

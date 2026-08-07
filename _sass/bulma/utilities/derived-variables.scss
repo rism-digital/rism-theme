@@ -1,132 +1,112 @@
-$primary: $turquoise !default;
+@use "initial-variables" as iv;
+@use "functions" as fn;
 
-$info   : $cyan !default;
-$success: $green !default;
-$warning: $yellow !default;
-$danger : $red !default;
+// Scheme colors
 
-$light  : $white-ter !default;
-$dark   : $grey-darker !default;
-
-// Invert colors
-
-$orange-invert   : findColorInvert($orange) !default;
-$yellow-invert   : findColorInvert($yellow) !default;
-$green-invert    : findColorInvert($green) !default;
-$turquoise-invert: findColorInvert($turquoise) !default;
-$cyan-invert     : findColorInvert($cyan) !default;
-$blue-invert     : findColorInvert($blue) !default;
-$purple-invert   : findColorInvert($purple) !default;
-$red-invert      : findColorInvert($red) !default;
-
-$primary-invert  : findColorInvert($primary) !default;
-$primary-light   : findLightColor($primary) !default;
-$primary-dark    : findDarkColor($primary) !default;
-$info-invert     : findColorInvert($info) !default;
-$info-light      : findLightColor($info) !default;
-$info-dark       : findDarkColor($info) !default;
-$success-invert  : findColorInvert($success) !default;
-$success-light   : findLightColor($success) !default;
-$success-dark    : findDarkColor($success) !default;
-$warning-invert  : findColorInvert($warning) !default;
-$warning-light   : findLightColor($warning) !default;
-$warning-dark    : findDarkColor($warning) !default;
-$danger-invert   : findColorInvert($danger) !default;
-$danger-light    : findLightColor($danger) !default;
-$danger-dark     : findDarkColor($danger) !default;
-$light-invert    : findColorInvert($light) !default;
-$dark-invert     : findColorInvert($dark) !default;
-
-// General colors
-
-$scheme-main       : $white !default;
-$scheme-main-bis   : $white-bis !default;
-$scheme-main-ter   : $white-ter !default;
-$scheme-invert     : $black !default;
-$scheme-invert-bis : $black-bis !default;
-$scheme-invert-ter : $black-ter !default;
-
-$background        : $white-ter !default;
-
-$border            : $grey-lighter !default;
-$border-hover      : $grey-light !default;
-$border-light      : $grey-lightest !default;
-$border-light-hover: $grey-light !default;
+$scheme-main: iv.$white !default;
+$scheme-main-bis: iv.$white-bis !default;
+$scheme-main-ter: iv.$white-ter !default;
+$scheme-invert: iv.$black !default;
+$scheme-invert-bis: iv.$black-bis !default;
+$scheme-invert-ter: iv.$black-ter !default;
 
 // Text colors
 
-$text       : $grey-dark !default;
-$text-invert: findColorInvert($text) !default;
-$text-light : $grey !default;
-$text-strong: $grey-darker !default;
+$text: iv.$grey-dark !default;
+$text-invert: fn.bulmaFindColorInvert($text) !default;
+$text-weak: iv.$grey !default;
+$text-strong: iv.$grey-darker !default;
 
-// Code colors
+// Status colors
 
-$code           : $red !default;
-$code-background: $background !default;
-
-$pre            : $text !default;
-$pre-background : $background !default;
+$primary: iv.$turquoise !default;
+$info: iv.$cyan !default;
+$success: iv.$green !default;
+$warning: iv.$yellow !default;
+$danger: iv.$red !default;
+$light: iv.$white-ter !default;
+$dark: iv.$grey-darker !default;
 
 // Link colors
 
-$link              : $blue !default;
-$link-invert       : findColorInvert($link) !default;
-$link-light        : findLightColor($link) !default;
-$link-dark         : findDarkColor($link) !default;
-$link-visited      : $purple !default;
+$link: iv.$blue !default;
 
-$link-hover        : $grey-darker !default;
-$link-hover-border : $grey-light !default;
+// Decorative colors
 
-$link-focus        : $grey-darker !default;
-$link-focus-border : $blue !default;
+$background: iv.$white-ter !default;
+$border: iv.$grey-lighter !default;
+$border-weak: iv.$grey-lightest !default;
 
-$link-active       : $grey-darker !default;
-$link-active-border: $grey-dark !default;
+// Code colors
+
+$code: iv.$red !default;
+$code-background: $background !default;
+
+$pre: $text !default;
+$pre-background: $background !default;
 
 // Typography
 
-$family-primary  : $family-sans-serif !default;
-$family-secondary: $family-sans-serif !default;
-$family-code     : $family-monospace !default;
+$family-primary: iv.$family-sans-serif !default;
+$family-secondary: iv.$family-sans-serif !default;
+$family-code: iv.$family-monospace !default;
 
-$size-small : $size-7 !default;
-$size-normal: $size-6 !default;
-$size-medium: $size-5 !default;
-$size-large : $size-4 !default;
+$size-small: iv.$size-7 !default;
+$size-normal: iv.$size-6 !default;
+$size-medium: iv.$size-5 !default;
+$size-large: iv.$size-4 !default;
+
+// Effects
+
+$shadow-color: iv.$black !default;
 
 // Lists and maps
 $custom-colors: null !default;
 $custom-shades: null !default;
 
-$colors: mergeColorMaps(
-(
-  "white"  : ($white, $black),
-  "black"  : ($black, $white),
-  "light"  : ($light, $light-invert),
-  "dark"   : ($dark, $dark-invert),
-  "primary": ($primary, $primary-invert, $primary-light, $primary-dark),
-  "link"   : ($link, $link-invert, $link-light, $link-dark),
-  "info"   : ($info, $info-invert, $info-light, $info-dark),
-  "success": ($success, $success-invert, $success-light, $success-dark),
-  "warning": ($warning, $warning-invert, $warning-light, $warning-dark),
-  "danger" : ($danger, $danger-invert, $danger-light, $danger-dark)),
+$colors: fn.mergeColorMaps(
+  (
+    "white": (
+      iv.$white,
+      iv.$black,
+    ),
+    "black": (
+      iv.$black,
+      iv.$white,
+    ),
+    "light": (
+      $light,
+      $dark,
+    ),
+    "dark": (
+      $dark,
+      $light,
+    ),
+    "text": $text,
+    "primary": $primary,
+    "link": $link,
+    "info": $info,
+    "success": $success,
+    "warning": $warning,
+    "danger": $danger,
+  ),
   $custom-colors
 ) !default;
 
-$shades: mergeColorMaps(
-(
-  "black-bis"   : $black-bis,
-  "black-ter"   : $black-ter,
-  "grey-darker" : $grey-darker,
-  "grey-dark"   : $grey-dark,
-  "grey"        : $grey,
-  "grey-light"  : $grey-light,
-  "grey-lighter": $grey-lighter,
-  "white-ter"   : $white-ter,
-  "white-bis"   : $white-bis),
+$shades: fn.mergeColorMaps(
+  (
+    "black-bis": iv.$black-bis,
+    "black-ter": iv.$black-ter,
+    "grey-darker": iv.$grey-darker,
+    "grey-dark": iv.$grey-dark,
+    "grey": iv.$grey,
+    "grey-light": iv.$grey-light,
+    "grey-lighter": iv.$grey-lighter,
+    "white-ter": iv.$white-ter,
+    "white-bis": iv.$white-bis,
+  ),
   $custom-shades
 ) !default;
 
-$sizes: $size-1 $size-2 $size-3 $size-4 $size-5 $size-6 $size-7 !default;
+$sizes: iv.$size-1 iv.$size-2 iv.$size-3 iv.$size-4 iv.$size-5 iv.$size-6
+  iv.$size-7 !default;
