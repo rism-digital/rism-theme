@@ -83,12 +83,16 @@ div.float-right {
 }
 
 .content div.float-left ~ ol,
-.content div.float-right ~ ol {
+.content div.float-left ~ ul,
+.content div.float-right ~ ol,
+.content div.float-right ~ ul {
   list-style-position: inside;
 }
 
 .content div.float-left ~ ol > li > p,
-.content div.float-right ~ ol > li > p {
+.content div.float-left ~ ul > li > p,
+.content div.float-right ~ ol > li > p,
+.content div.float-right ~ ul > li > p {
   display: inline;
 }
 
