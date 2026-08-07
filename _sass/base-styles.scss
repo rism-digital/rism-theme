@@ -82,6 +82,11 @@ div.float-right {
   margin-bottom: 5px;
 }
 
+.content div.float-left ~ ol,
+.content div.float-right ~ ol {
+  list-style-position: inside;
+}
+
 .news {
   border-bottom: 0;
   min-height: 150px;
