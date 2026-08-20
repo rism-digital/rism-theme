@@ -136,7 +136,7 @@ button {
 }
 
 a {
-  color: cv.getVar("link-text");
+  color: cv.getVar("link");
   cursor: pointer;
   text-decoration: none;
   transition-duration: cv.getVar("duration");
