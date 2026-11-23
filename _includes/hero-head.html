@@ -5,9 +5,11 @@
     </div>
     {% endif %}
     <div class="is-pulled-right">
-        <a {% if site.active_lang == "en" %}class="disabled"{% endif %} href="{{ site.baseurl | append: " " | append: page.permalink }}">English</a>
-        {% if site.languages contains 'de' %}|&#160;<a {% if site.active_lang == "de" %}class="disabled"{% endif %} href="{{ site.baseurl | append: "/de" | append: page.permalink }}">Deutsch</a>{% endif %}
-        {% if site.languages contains 'fr' %}|&#160;<a {% if site.active_lang == "fr" %}class="disabled"{% endif %} href="{{ site.baseurl | append: "/fr" | append: page.permalink }}">Français</a>{% endif %}
-        {% if site.languages contains 'it' %}|&#160;<a {% if site.active_lang == "it" %}class="disabled"{% endif %} href="{{ site.baseurl | append: "/it" | append: page.permalink }}">Italiano</a>{% endif %}
+        {% comment %}Language switches must bypass Polyglot's automatic URL localization.{% endcomment %}
+        {% assign language_path = page.permalink | default: page.url | prepend: "/" | replace: "//", "/" %}
+        <a {% if site.active_lang == "en" %}class="disabled"{% endif %} {% static_href %}href="{{ site.baseurl | append: language_path }}"{% endstatic_href %}>English</a>
+        {% if site.languages contains 'de' %}|&#160;<a {% if site.active_lang == "de" %}class="disabled"{% endif %} {% static_href %}href="{{ site.baseurl | append: "/de" | append: language_path }}"{% endstatic_href %}>Deutsch</a>{% endif %}
+        {% if site.languages contains 'fr' %}|&#160;<a {% if site.active_lang == "fr" %}class="disabled"{% endif %} {% static_href %}href="{{ site.baseurl | append: "/fr" | append: language_path }}"{% endstatic_href %}>Français</a>{% endif %}
+        {% if site.languages contains 'it' %}|&#160;<a {% if site.active_lang == "it" %}class="disabled"{% endif %} {% static_href %}href="{{ site.baseurl | append: "/it" | append: language_path }}"{% endstatic_href %}>Italiano</a>{% endif %}
     </div>
 </div>
