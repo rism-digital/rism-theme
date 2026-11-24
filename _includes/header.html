@@ -10,7 +10,7 @@
         </div>
         <div class="navbar-menu" id="navMenu">
             <div class="navbar-start">
-                {% assign active_nav = page.permalink | default: layout.nav %}
+                {% assign active_nav = layout.nav | default: page.permalink %}
                 {% for item in site.data.navigation %}
                     {% if item.dropdown %}
                     <div class="navbar-item has-dropdown is-hoverable">
